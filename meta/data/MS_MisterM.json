@@ -1,0 +1,169 @@
+{
+  "info": {
+    "title": "MS_MisterM",
+    "x-type": "odata",
+    "x-connector": "mssql",
+    "x-connector-version": 15
+  },
+  "definitions": {
+    "MsMisterMComputer": {
+      "x-table": "dbo.Computers",
+      "resource": "MsMisterMComputers",
+      "required": [],
+      "properties": {
+        "mac": {
+          "type": "string",
+          "x-key": true,
+          "x-virtual": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        }
+      },
+      "x-view": true
+    },
+    "User": {
+      "x-table": "dbo.Users",
+      "resource": "Users",
+      "required": [],
+      "properties": {
+        "id": {
+          "type": "string",
+          "x-key": true,
+          "x-virtual": true
+        },
+        "username": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "x-view": true
+    }
+  },
+  "paths": {
+    "/MsMisterMComputers": {
+      "get": {
+        "operationId": "getMsMisterMComputers",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/MsMisterMComputer"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Users": {
+      "get": {
+        "operationId": "getUsers",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/User"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "basePath": "/odata/MsMisterM",
+  "host": "localhost:5000",
+  "schemes": [
+    "http"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "access": "Everybody",
+  "components": [
+    {
+      "components": [
+        {
+          "name": "heading1",
+          "size": "H3",
+          "style": {
+            "height": "52px"
+          },
+          "type": "heading",
+          "visible": true
+        },
+        {
+          "name": "heading0",
+          "size": "H1",
+          "style": {
+            "height": "68px"
+          },
+          "text": "All assets",
+          "type": "heading",
+          "visible": true
+        },
+        {
+          "class": "col-md-12",
+          "name": "col0",
+          "type": "col"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "layout": "Main",
+  "name": "AssetList"
+}

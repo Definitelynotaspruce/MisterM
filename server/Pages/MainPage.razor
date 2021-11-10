@@ -1,0 +1,91 @@
+﻿@page "/"
+@page "/main-page"
+@layout MainLayout
+@inherits MisterM.Pages.MainPageComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using MisterM.Models.MsMisterM
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenLabel style="height: 42px; width: 229.40625px">
+    </RadzenLabel>
+    <RadzenHeading Size="H1" style="height: 76px" Text="Mister Monitor">
+    </RadzenHeading>
+    <RadzenLabel style="border-radius: 10px; font-size: 21px; height: 55px; text-align: right; width: 860.390625px" Text="Welcome to the best computer monitoring software solution! Get real-time updates and enjoy! ">
+    </RadzenLabel>
+    <div class="row">
+      <div class="col-lg-6 col-xl-2   col-md-2 col-sm-2 col-2">
+        <RadzenCard style="background-color: #e6ecef; margin-bottom: 16px">
+          <ChildContent>
+            <div class="row">
+              <div class="col-xl-4  col-lg-4">
+                <RadzenIcon Icon="devices" style="height: 64px; width: 64px">
+                </RadzenIcon>
+              </div>
+              <div class="col-6" >
+                <RadzenHeading Size="H4" style="margin-bottom: 0px; text-align: center" Text="Total devices">
+                </RadzenHeading>
+                <RadzenHeading Size="H4" style="border-radius: ; color: #cb6992; font-weight: bold; margin-bottom: 0px; text-align: center" Text="0">
+                </RadzenHeading>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenCard>
+      </div>
+      <div class="col-lg-6 col-xl-2   col-md-2 col-sm-2 col-2">
+        <RadzenCard style="background-color: #e6ecef; margin-bottom: 16px">
+          <ChildContent>
+            <div class="row">
+              <div class="col-xl-4  col-lg-4">
+                <RadzenIcon Icon="track_changes" style="height: 64px; width: 64px">
+                </RadzenIcon>
+              </div>
+              <div class="col-6" >
+                <RadzenHeading Size="H4" style="margin-bottom: 0px; text-align: center" Text="Active now">
+                </RadzenHeading>
+                <RadzenHeading Size="H4" style="border-radius: ; color: #cb6992; font-weight: bold; margin-bottom: 0px; text-align: center" Text="0">
+                </RadzenHeading>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenCard>
+      </div>
+      <div class="col-lg-6 col-xl-2   col-md-2 col-sm-2 col-2">
+        <RadzenCard style="background-color: #e6ecef; margin-bottom: 16px">
+          <ChildContent>
+            <div class="row">
+              <div class="col-xl-4  col-lg-4">
+                <RadzenIcon Icon="ac_unit" style="height: 64px; width: 64px">
+                </RadzenIcon>
+              </div>
+              <div class="col-6" >
+                <RadzenHeading Size="H4" style="margin-bottom: 0px; text-align: center" Text="Average temperature">
+                </RadzenHeading>
+                <RadzenHeading Size="H4" style="border-radius: ; color: #cb6992; font-weight: bold; margin-bottom: 0px; text-align: center" Text="0">
+                </RadzenHeading>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenCard>
+      </div>
+    </div>
+    <RadzenFieldset AllowCollapse="false" style="height: 296.140625px; margin-left: 10px; width: 50%" Text="Last active devices" >
+      <ChildContent>
+        <RadzenDataGrid @ref="datagrid0" AllowColumnResize="false" AllowFiltering="false" AllowPaging="true" AllowSorting="false" Data="@getMsMisterMComputersResult" TItem="MisterM.Models.MsMisterM.MsMisterMComputer" PageSize="10" style="height: 232px; width: 100%">
+          <Columns>
+            <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.MsMisterMComputer" Property="mac" Title="Mac">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.MsMisterMComputer" Property="name" Title="Name">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.MsMisterMComputer" Property="model" Title="Model">
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </ChildContent>
+    </RadzenFieldset>
+    <RadzenHtml>
+      <CustomOnClick Title="Test" Click="@CustomComponentClick" />
+    </RadzenHtml>
+  </ChildContent>
+</RadzenContent>
