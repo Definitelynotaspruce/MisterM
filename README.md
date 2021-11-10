@@ -1,6 +1,10 @@
 # MisterM
 Asset Monitoring software solution 
 
+First prototype: <br>
+- MAC address
+- Real-time CPU temperature 
+
 Monitored data: <br>
 - Device name
 - Device serial number?
