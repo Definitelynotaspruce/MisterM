@@ -1,0 +1,57 @@
+﻿@inherits MisterM.Layouts.MainLayoutComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using MisterM.Models.MsMisterM
+<RadzenDialog />
+<RadzenNotification />
+<RadzenTooltip />
+<RadzenContextMenu />
+
+<RadzenHeader style="height: 56px; position: absolute">
+  <ChildContent>
+    <div class="row justify-content-start align-items-center" style="height: 44px; position: absolute; width: 1161px">
+      <div class="col-6 d-flex align-items-center" style="position: absolute">
+        <RadzenSidebarToggle Click="@SidebarToggle0Click">
+        </RadzenSidebarToggle>
+        <RadzenLabel style="font-size: 20px; font-style: normal; font-weight: bold" Text="MisterM">
+        </RadzenLabel>
+      </div>
+      <div class="col-6 text-right" style="height: 23px; text-align: justify">
+        <RadzenLabel style="text-align: right; width: 1147px" Text="Get real-time device stats here!">
+        </RadzenLabel>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenHeader>
+<RadzenBody @ref="body0" style="height: 424px; margin-left: 208px">
+  <ChildContent>
+    <RadzenContentContainer Name="main">
+    @Body
+    </RadzenContentContainer>
+  </ChildContent>
+</RadzenBody>
+<RadzenSidebar @ref="sidebar0" style="top: 56px; width: 208px">
+  <ChildContent>
+    <RadzenPanelMenu style="height: 790px; width: 208px">
+      <ChildContent>
+        <RadzenPanelMenuItem Icon="track_changes" Path="main-page" Selected="false" Text="Main">
+        </RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Icon="list" Path="asset-list" Text="Asset list">
+        </RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Icon="get_app" Path="download" Text="Download">
+        </RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Icon="link" Path="github" Text="Github">
+        </RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Icon="info" Path="about-us" Text="About Us">
+        </RadzenPanelMenuItem>
+      </ChildContent>
+    </RadzenPanelMenu>
+  </ChildContent>
+</RadzenSidebar>
+<RadzenFooter>
+  <ChildContent>
+    <RadzenLabel Text="Mister Monitor team, Copyright Ⓒ 2021">
+    </RadzenLabel>
+  </ChildContent>
+</RadzenFooter>

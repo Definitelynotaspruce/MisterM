@@ -1,0 +1,19 @@
+﻿<button type="button" @onclick="@((args) => OnClick(args))">
+    @if (!string.IsNullOrEmpty(Title))
+    {
+        <span class="ui-button-text">@Title</span>
+    }
+</button>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> Click { get; set; }
+
+    void OnClick(MouseEventArgs args)
+    {
+        Click.InvokeAsync(args);
+    }
+}
