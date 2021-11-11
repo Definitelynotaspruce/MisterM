@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Components;
 using MisterM.Data;
-using MisterM.Models.MS_MisterM;
+using MisterM.Models.MsMisterM;
 
 namespace MisterM
 {

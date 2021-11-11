@@ -6,6 +6,7 @@
 @using Radzen
 @using Radzen.Blazor
 @using MisterM.Models.MsMisterM
+@using MisterM.Controllers
 <RadzenContent Container="main">
   <ChildContent>
     <RadzenLabel style="height: 42px; width: 229.40625px">
@@ -26,7 +27,7 @@
               <div class="col-6" >
                 <RadzenHeading Size="H4" style="margin-bottom: 0px; text-align: center" Text="Total devices">
                 </RadzenHeading>
-                <RadzenHeading Size="H4" style="border-radius: ; color: #cb6992; font-weight: bold; margin-bottom: 0px; text-align: center" Text="0">
+                <RadzenHeading Size="H4" style="border-radius: ; color: #cb6992; font-weight: bold; margin-bottom: 0px; text-align: center" Text="@TotalDevices.ToString()">
                 </RadzenHeading>
               </div>
             </div>
@@ -44,7 +45,7 @@
               <div class="col-6" >
                 <RadzenHeading Size="H4" style="margin-bottom: 0px; text-align: center" Text="Active now">
                 </RadzenHeading>
-                <RadzenHeading Size="H4" style="border-radius: ; color: #cb6992; font-weight: bold; margin-bottom: 0px; text-align: center" Text="0">
+                <RadzenHeading Size="H4" style="border-radius: ; color: #cb6992; font-weight: bold; margin-bottom: 0px; text-align: center" Text="@ActiveDevices.ToString()">
                 </RadzenHeading>
               </div>
             </div>
@@ -72,7 +73,7 @@
     </div>
     <RadzenFieldset AllowCollapse="false" style="height: 296.140625px; margin-left: 10px; width: 50%" Text="Last active devices" >
       <ChildContent>
-        <RadzenDataGrid @ref="datagrid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getComputersResult" TItem="MisterM.Models.MsMisterM.Computer" PageSize="10" style="height: 231px">
+        <RadzenDataGrid @ref="datagrid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getComputersResult" TItem="MisterM.Models.MsMisterM.Computer" PageSize="10">
           <Columns>
             <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="mac" Title="Mac">
             </RadzenDataGridColumn>
@@ -91,3 +92,18 @@
     </RadzenHtml>
   </ChildContent>
 </RadzenContent>
+
+@code
+{
+  [Inject]
+  protected ComputerController ComputerController { get; set; }
+
+  protected int ActiveDevices;
+  protected int TotalDevices;
+
+  protected override async Task OnInitializedAsync()
+  {
+    TotalDevices = await ComputerController.GetComputerCount();
+    await base.OnInitializedAsync();
+  }
+}

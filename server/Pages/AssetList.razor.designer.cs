@@ -9,7 +9,6 @@ using Radzen;
 using Radzen.Blazor;
 using MisterM.Models.MsMisterM;
 using Microsoft.EntityFrameworkCore;
-using MisterM.Models.MS_MisterM;
 
 namespace MisterM.Pages
 {

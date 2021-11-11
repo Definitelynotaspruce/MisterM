@@ -1,7 +1,10 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
 using MisterM.Data;
-using MisterM.Models.MS_MisterM;
+using MisterM.Hubs;
 using MisterM.Models.MsMisterM;
 using MisterM.Structures;
 
@@ -10,10 +13,12 @@ namespace MisterM.Controllers
     public class ComputerController 
     {
         private readonly MsMisterMContext _context;
+        private readonly IHubContext<DeviceReadingHub> _deviceHubContext;
 
-        public ComputerController(MsMisterMContext context)
+        public ComputerController(MsMisterMContext context, IHubContext<DeviceReadingHub> deviceHubContext)
         {
             _context = context;
+            _deviceHubContext = deviceHubContext;
         }
 
         public Computer CreateComputer(ComputerReading computerReading)
@@ -55,6 +60,16 @@ namespace MisterM.Controllers
         {
             Computer? computer = UpdateComputer(computerReading);
             return computer ?? CreateComputer(computerReading);
+        }
+
+        public Task<int> GetComputerCount()
+        {
+            return _context.Computers.CountAsync();
+        }
+
+        public Task<int> GetConnectedDeviceCount()
+        {
+            return null;
         }
     }
 }

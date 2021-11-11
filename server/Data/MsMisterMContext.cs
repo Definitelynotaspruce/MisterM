@@ -5,7 +5,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
-using MisterM.Models.MS_MisterM;
 using MisterM.Models.MsMisterM;
 
 namespace MisterM.Data
