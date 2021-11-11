@@ -7,6 +7,7 @@ namespace MisterM.Models.MsMisterM
   [Table("Computers", Schema = "dbo")]
   public partial class Computer
   {
+    [Key]
     public string mac
     {
       get;

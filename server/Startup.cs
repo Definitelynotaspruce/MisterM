@@ -17,7 +17,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-
+using MisterM.Controllers;
 using MisterM.Data;
 using MisterM.Hubs;
 using Radzen;
@@ -71,6 +71,9 @@ namespace MisterM
             {
                 o.MaximumReceiveMessageSize = 10 * 1024 * 1024;
             });
+
+            // Computer Manipulation Controller
+            services.AddScoped<ComputerController>();
 
             services.AddScoped<DialogService>();
             services.AddScoped<NotificationService>();

@@ -26,7 +26,7 @@ namespace MisterM.Data
     {
         base.OnModelCreating(builder);
 
-        builder.Entity<MisterM.Models.MsMisterM.Computer>().HasNoKey();
+        builder.Entity<MisterM.Models.MsMisterM.Computer>();
         builder.Entity<MisterM.Models.MsMisterM.User>().HasNoKey();
 
 
