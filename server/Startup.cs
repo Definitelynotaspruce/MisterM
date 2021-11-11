@@ -19,6 +19,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 
 using MisterM.Data;
+using MisterM.Hubs;
 using Radzen;
 
 // how to create connection guide: https://blazorhelpwebsite.com/ViewBlogPost/34
@@ -105,6 +106,7 @@ namespace MisterM
             {
                 endpoints.MapControllers();
                 endpoints.MapBlazorHub();
+                endpoints.MapHub<DeviceReadingHub>("/reading");
                 endpoints.MapFallbackToPage("/_Host");
             });
 
