@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Components;
 using MisterM.Data;
+using MisterM.Models.MS_MisterM;
 
 namespace MisterM
 {
@@ -46,9 +47,9 @@ namespace MisterM
             navigationManager.NavigateTo(query != null ? query.ToUrl($"export/msmisterm/computers/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/msmisterm/computers/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
         }
 
-        partial void OnComputersRead(ref IQueryable<Models.MsMisterM.Computer> items);
+        partial void OnComputersRead(ref IQueryable<Computer> items);
 
-        public async Task<IQueryable<Models.MsMisterM.Computer>> GetComputers(Query query = null)
+        public async Task<IQueryable<Computer>> GetComputers(Query query = null)
         {
             var items = Context.Computers.AsQueryable();
             items = items.AsNoTracking();

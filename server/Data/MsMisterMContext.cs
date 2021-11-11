@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
-
+using MisterM.Models.MS_MisterM;
 using MisterM.Models.MsMisterM;
 
 namespace MisterM.Data
@@ -26,18 +26,18 @@ namespace MisterM.Data
     {
         base.OnModelCreating(builder);
 
-        builder.Entity<MisterM.Models.MsMisterM.Computer>();
+        builder.Entity<Computer>();
         builder.Entity<MisterM.Models.MsMisterM.User>().HasNoKey();
 
 
-        builder.Entity<MisterM.Models.MsMisterM.Computer>()
+        builder.Entity<Computer>()
               .Property(p => p.temperature)
               .HasPrecision(24, 0);
         this.OnModelBuilding(builder);
     }
 
 
-    public DbSet<MisterM.Models.MsMisterM.Computer> Computers
+    public DbSet<Computer> Computers
     {
       get;
       set;
