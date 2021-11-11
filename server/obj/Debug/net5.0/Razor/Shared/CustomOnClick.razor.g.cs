@@ -84,15 +84,13 @@ using Radzen;
 #nullable disable
             __builder.OpenElement(3, "span");
             __builder.AddAttribute(4, "class", "ui-button-text");
-            __builder.AddContent(5, 
 #nullable restore
 #line 4 "C:\Users\jkosiakaite\OneDrive - 1ClickFactory\UNI\.net\MisterM\server\Shared\CustomOnClick.razor"
-                                      Title
+__builder.AddContent(5, Title);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
 #nullable restore
 #line 5 "C:\Users\jkosiakaite\OneDrive - 1ClickFactory\UNI\.net\MisterM\server\Shared\CustomOnClick.razor"

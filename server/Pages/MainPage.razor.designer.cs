@@ -46,21 +46,21 @@ namespace MisterM.Pages
 
         [Inject]
         protected MsMisterMService MsMisterM { get; set; }
-        protected RadzenDataGrid<MisterM.Models.MsMisterM.MsMisterMComputer> datagrid0;
+        protected RadzenDataGrid<MisterM.Models.MsMisterM.Computer> datagrid0;
 
-        IEnumerable<MisterM.Models.MsMisterM.MsMisterMComputer> _getMsMisterMComputersResult;
-        protected IEnumerable<MisterM.Models.MsMisterM.MsMisterMComputer> getMsMisterMComputersResult
+        IEnumerable<MisterM.Models.MsMisterM.Computer> _getComputersResult;
+        protected IEnumerable<MisterM.Models.MsMisterM.Computer> getComputersResult
         {
             get
             {
-                return _getMsMisterMComputersResult;
+                return _getComputersResult;
             }
             set
             {
-                if (!object.Equals(_getMsMisterMComputersResult, value))
+                if (!object.Equals(_getComputersResult, value))
                 {
-                    var args = new PropertyChangedEventArgs(){ Name = "getMsMisterMComputersResult", NewValue = value, OldValue = _getMsMisterMComputersResult };
-                    _getMsMisterMComputersResult = value;
+                    var args = new PropertyChangedEventArgs(){ Name = "getComputersResult", NewValue = value, OldValue = _getComputersResult };
+                    _getComputersResult = value;
                     OnPropertyChanged(args);
                     Reload();
                 }
@@ -73,8 +73,8 @@ namespace MisterM.Pages
         }
         protected async System.Threading.Tasks.Task Load()
         {
-            var msMisterMGetMsMisterMComputersResult = await MsMisterM.GetMsMisterMComputers();
-            getMsMisterMComputersResult = msMisterMGetMsMisterMComputersResult;
+            var msMisterMGetComputersResult = await MsMisterM.GetComputers();
+            getComputersResult = msMisterMGetComputersResult;
         }
     }
 }

@@ -15,4 +15,5 @@ namespace MisterM.Pages
             Console.WriteLine("Custom component clicked!");
         }
     }
+    
 }

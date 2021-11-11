@@ -14,18 +14,18 @@ namespace MisterM
         {
             this.context = context;
         }
-        [HttpGet("/export/MsMisterM/msmistermcomputers/csv")]
-        [HttpGet("/export/MsMisterM/msmistermcomputers/csv(fileName='{fileName}')")]
-        public FileStreamResult ExportMsMisterMComputersToCSV(string fileName = null)
+        [HttpGet("/export/MsMisterM/computers/csv")]
+        [HttpGet("/export/MsMisterM/computers/csv(fileName='{fileName}')")]
+        public FileStreamResult ExportComputersToCSV(string fileName = null)
         {
-            return ToCSV(ApplyQuery(context.MsMisterMComputers, Request.Query), fileName);
+            return ToCSV(ApplyQuery(context.Computers, Request.Query), fileName);
         }
 
-        [HttpGet("/export/MsMisterM/msmistermcomputers/excel")]
-        [HttpGet("/export/MsMisterM/msmistermcomputers/excel(fileName='{fileName}')")]
-        public FileStreamResult ExportMsMisterMComputersToExcel(string fileName = null)
+        [HttpGet("/export/MsMisterM/computers/excel")]
+        [HttpGet("/export/MsMisterM/computers/excel(fileName='{fileName}')")]
+        public FileStreamResult ExportComputersToExcel(string fileName = null)
         {
-            return ToExcel(ApplyQuery(context.MsMisterMComputers, Request.Query), fileName);
+            return ToExcel(ApplyQuery(context.Computers, Request.Query), fileName);
         }
         [HttpGet("/export/MsMisterM/users/csv")]
         [HttpGet("/export/MsMisterM/users/csv(fileName='{fileName}')")]

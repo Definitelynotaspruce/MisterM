@@ -20,6 +20,9 @@ using Microsoft.EntityFrameworkCore;
 
 using MisterM.Data;
 using Radzen;
+
+// how to create connection guide: https://blazorhelpwebsite.com/ViewBlogPost/34
+
 namespace MisterM
 {
     public partial class Startup
@@ -52,8 +55,11 @@ namespace MisterM
             });
 
             services.AddHttpClient();
+
+            //scoped creates an instance for each user 
             services.AddScoped<MsMisterMService>();
 
+            // set the database connection for the MSMisterM 
             services.AddDbContext<MisterM.Data.MsMisterMContext>(options =>
             {
               options.UseSqlServer(Configuration.GetConnectionString("MsMisterMConnection"));

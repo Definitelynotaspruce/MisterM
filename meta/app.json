@@ -24,7 +24,9 @@
     "Github",
     "InfoCard",
     "Download",
-    "About Us"
+    "About Us",
+    "Sum",
+    "AvgTemperature"
   ],
   "serverLang": "cs",
   "serverProject": true,

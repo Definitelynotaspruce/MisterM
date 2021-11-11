@@ -6,9 +6,9 @@
     "x-connector-version": 15
   },
   "definitions": {
-    "MsMisterMComputer": {
+    "Computer": {
       "x-table": "dbo.Computers",
-      "resource": "MsMisterMComputers",
+      "resource": "Computers",
       "required": [],
       "properties": {
         "mac": {
@@ -21,6 +21,11 @@
         },
         "model": {
           "type": "string"
+        },
+        "temperature": {
+          "x-precision": 24,
+          "type": "number",
+          "format": "float"
         }
       },
       "x-view": true
@@ -46,9 +51,9 @@
     }
   },
   "paths": {
-    "/MsMisterMComputers": {
+    "/Computers": {
       "get": {
-        "operationId": "getMsMisterMComputers",
+        "operationId": "getComputers",
         "parameters": [
           {
             "in": "query",
@@ -87,7 +92,7 @@
               "properties": {
                 "value": {
                   "items": {
-                    "$ref": "#/definitions/MsMisterMComputer"
+                    "$ref": "#/definitions/Computer"
                   },
                   "type": "array"
                 }

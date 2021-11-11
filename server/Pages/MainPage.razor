@@ -72,13 +72,15 @@
     </div>
     <RadzenFieldset AllowCollapse="false" style="height: 296.140625px; margin-left: 10px; width: 50%" Text="Last active devices" >
       <ChildContent>
-        <RadzenDataGrid @ref="datagrid0" AllowColumnResize="false" AllowFiltering="false" AllowPaging="true" AllowSorting="false" Data="@getMsMisterMComputersResult" TItem="MisterM.Models.MsMisterM.MsMisterMComputer" PageSize="10" style="height: 232px; width: 100%">
+        <RadzenDataGrid @ref="datagrid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getComputersResult" TItem="MisterM.Models.MsMisterM.Computer" PageSize="10" style="height: 231px">
           <Columns>
-            <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.MsMisterMComputer" Property="mac" Title="Mac">
+            <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="mac" Title="Mac">
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.MsMisterMComputer" Property="name" Title="Name">
+            <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="name" Title="Name">
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.MsMisterMComputer" Property="model" Title="Model">
+            <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="model" Title="Model">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="temperature" Title="Temperature">
             </RadzenDataGridColumn>
           </Columns>
         </RadzenDataGrid>

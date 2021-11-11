@@ -46,5 +46,35 @@ namespace MisterM.Pages
 
         [Inject]
         protected MsMisterMService MsMisterM { get; set; }
+        protected RadzenDataGrid<MisterM.Models.MsMisterM.Computer> datagrid0;
+
+        IEnumerable<MisterM.Models.MsMisterM.Computer> _getComputersResult;
+        protected IEnumerable<MisterM.Models.MsMisterM.Computer> getComputersResult
+        {
+            get
+            {
+                return _getComputersResult;
+            }
+            set
+            {
+                if (!object.Equals(_getComputersResult, value))
+                {
+                    var args = new PropertyChangedEventArgs(){ Name = "getComputersResult", NewValue = value, OldValue = _getComputersResult };
+                    _getComputersResult = value;
+                    OnPropertyChanged(args);
+                    Reload();
+                }
+            }
+        }
+
+        protected override async System.Threading.Tasks.Task OnInitializedAsync()
+        {
+            await Load();
+        }
+        protected async System.Threading.Tasks.Task Load()
+        {
+            var msMisterMGetComputersResult = await MsMisterM.GetComputers();
+            getComputersResult = msMisterMGetComputersResult;
+        }
     }
 }

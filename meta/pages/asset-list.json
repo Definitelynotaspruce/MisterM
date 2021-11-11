@@ -23,15 +23,74 @@
           "visible": true
         },
         {
-          "class": "col-md-12",
-          "name": "col0",
-          "type": "col"
+          "allowCollapse": false,
+          "attributes": [
+            {}
+          ],
+          "components": [
+            {
+              "allowFiltering": true,
+              "allowPaging": true,
+              "allowSorting": true,
+              "columns": [
+                {
+                  "property": "mac",
+                  "title": "Mac"
+                },
+                {
+                  "property": "name",
+                  "title": "Name"
+                },
+                {
+                  "property": "model",
+                  "title": "Model"
+                },
+                {
+                  "property": "temperature",
+                  "title": "Temperature"
+                }
+              ],
+              "data": "${getComputersResult}",
+              "itemType": "MisterM.Models.MsMisterM.Computer",
+              "name": "datagrid0",
+              "pageSize": 10,
+              "type": "datagrid"
+            }
+          ],
+          "headerTemplate": "",
+          "icon": "",
+          "name": "Fieldset",
+          "style": {
+            "height": "90%",
+            "marginLeft": "10px",
+            "width": "50%"
+          },
+          "summaryTemplate": "",
+          "text": "---",
+          "type": "fieldset"
         }
       ],
       "container": "main",
       "type": "content"
     }
   ],
+  "events": {
+    "load": [
+      {
+        "name": "MS_MisterM.getComputers",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getComputersResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<MisterM.Models.MsMisterM.Computer>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
   "layout": "Main",
   "name": "AssetList"
 }

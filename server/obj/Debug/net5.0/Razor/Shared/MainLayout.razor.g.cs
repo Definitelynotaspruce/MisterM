@@ -99,7 +99,7 @@ using MisterM.Models.MsMisterM;
                 __builder2.AddAttribute(15, "class", "col-6 d-flex align-items-center");
                 __builder2.AddAttribute(16, "style", "position: absolute");
                 __builder2.OpenComponent<Radzen.Blazor.RadzenSidebarToggle>(17);
-                __builder2.AddAttribute(18, "Click", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.EventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.EventArgs>(this, 
+                __builder2.AddAttribute(18, "Click", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.EventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.EventArgs>(this, 
 #nullable restore
 #line 15 "C:\Users\jkosiakaite\OneDrive - 1ClickFactory\UNI\.net\MisterM\server\Shared\MainLayout.razor"
                                      SidebarToggle0Click
@@ -135,15 +135,13 @@ using MisterM.Models.MsMisterM;
                 __builder2.OpenComponent<Radzen.Blazor.RadzenContentContainer>(34);
                 __builder2.AddAttribute(35, "Name", "main");
                 __builder2.AddAttribute(36, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
-                    __builder3.AddContent(37, 
 #nullable restore
 #line 30 "C:\Users\jkosiakaite\OneDrive - 1ClickFactory\UNI\.net\MisterM\server\Shared\MainLayout.razor"
-     Body
+__builder3.AddContent(37, Body);
 
 #line default
 #line hidden
 #nullable disable
-                    );
                 }
                 ));
                 __builder2.CloseComponent();
@@ -170,7 +168,7 @@ using MisterM.Models.MsMisterM;
                     __builder3.OpenComponent<Radzen.Blazor.RadzenPanelMenuItem>(46);
                     __builder3.AddAttribute(47, "Icon", "track_changes");
                     __builder3.AddAttribute(48, "Path", "main-page");
-                    __builder3.AddAttribute(49, "Selected", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+                    __builder3.AddAttribute(49, "Selected", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 38 "C:\Users\jkosiakaite\OneDrive - 1ClickFactory\UNI\.net\MisterM\server\Shared\MainLayout.razor"
                                                                              false

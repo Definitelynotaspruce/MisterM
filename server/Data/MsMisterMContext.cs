@@ -26,14 +26,18 @@ namespace MisterM.Data
     {
         base.OnModelCreating(builder);
 
-        builder.Entity<MisterM.Models.MsMisterM.MsMisterMComputer>().HasNoKey();
+        builder.Entity<MisterM.Models.MsMisterM.Computer>().HasNoKey();
         builder.Entity<MisterM.Models.MsMisterM.User>().HasNoKey();
 
+
+        builder.Entity<MisterM.Models.MsMisterM.Computer>()
+              .Property(p => p.temperature)
+              .HasPrecision(24, 0);
         this.OnModelBuilding(builder);
     }
 
 
-    public DbSet<MisterM.Models.MsMisterM.MsMisterMComputer> MsMisterMComputers
+    public DbSet<MisterM.Models.MsMisterM.Computer> Computers
     {
       get;
       set;

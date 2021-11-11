@@ -264,11 +264,9 @@
           ],
           "components": [
             {
-              "allowColumnResize": false,
-              "allowFiltering": false,
+              "allowFiltering": true,
               "allowPaging": true,
-              "allowSorting": false,
-              "columnWidth": "",
+              "allowSorting": true,
               "columns": [
                 {
                   "property": "mac",
@@ -281,19 +279,20 @@
                 {
                   "property": "model",
                   "title": "Model"
+                },
+                {
+                  "property": "temperature",
+                  "title": "Temperature"
                 }
               ],
-              "count": "",
-              "data": "${getMsMisterMComputersResult}",
-              "itemType": "MisterM.Models.MsMisterM.MsMisterMComputer",
+              "data": "${getComputersResult}",
+              "itemType": "MisterM.Models.MsMisterM.Computer",
               "name": "datagrid0",
               "pageSize": 10,
               "style": {
-                "height": "232px",
-                "width": "100%"
+                "height": "231px"
               },
-              "type": "datagrid",
-              "value": ""
+              "type": "datagrid"
             }
           ],
           "headerTemplate": "",
@@ -321,14 +320,14 @@
   "events": {
     "load": [
       {
-        "name": "MS_MisterM.getMsMisterMComputers",
+        "name": "MS_MisterM.getComputers",
         "parameters": [],
         "then": [
           {
-            "name": "getMsMisterMComputersResult",
+            "name": "getComputersResult",
             "type": "set",
             "value": "${result}",
-            "valueType": "IEnumerable<MisterM.Models.MsMisterM.MsMisterMComputer>"
+            "valueType": "IEnumerable<MisterM.Models.MsMisterM.Computer>"
           }
         ],
         "type": "invoke"

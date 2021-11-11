@@ -11,7 +11,21 @@
     </RadzenHeading>
     <RadzenHeading Size="H1" style="height: 68px" Text="All assets">
     </RadzenHeading>
-    <div class="col-md-12">
-    </div>
+    <RadzenFieldset AllowCollapse="false" style="height: 90%; margin-left: 10px; width: 50%" Text="---" >
+      <ChildContent>
+        <RadzenDataGrid @ref="datagrid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getComputersResult" TItem="MisterM.Models.MsMisterM.Computer" PageSize="10">
+          <Columns>
+            <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="mac" Title="Mac">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="name" Title="Name">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="model" Title="Model">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="temperature" Title="Temperature">
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </ChildContent>
+    </RadzenFieldset>
   </ChildContent>
 </RadzenContent>

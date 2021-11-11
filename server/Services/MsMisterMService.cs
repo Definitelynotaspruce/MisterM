@@ -36,21 +36,21 @@ namespace MisterM
 
         public void Reset() => Context.ChangeTracker.Entries().Where(e => e.Entity != null).ToList().ForEach(e => e.State = EntityState.Detached);
 
-        public async Task ExportMsMisterMComputersToExcel(Query query = null, string fileName = null)
+        public async Task ExportComputersToExcel(Query query = null, string fileName = null)
         {
-            navigationManager.NavigateTo(query != null ? query.ToUrl($"export/msmisterm/msmistermcomputers/excel(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/msmisterm/msmistermcomputers/excel(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
+            navigationManager.NavigateTo(query != null ? query.ToUrl($"export/msmisterm/computers/excel(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/msmisterm/computers/excel(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
         }
 
-        public async Task ExportMsMisterMComputersToCSV(Query query = null, string fileName = null)
+        public async Task ExportComputersToCSV(Query query = null, string fileName = null)
         {
-            navigationManager.NavigateTo(query != null ? query.ToUrl($"export/msmisterm/msmistermcomputers/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/msmisterm/msmistermcomputers/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
+            navigationManager.NavigateTo(query != null ? query.ToUrl($"export/msmisterm/computers/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/msmisterm/computers/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
         }
 
-        partial void OnMsMisterMComputersRead(ref IQueryable<Models.MsMisterM.MsMisterMComputer> items);
+        partial void OnComputersRead(ref IQueryable<Models.MsMisterM.Computer> items);
 
-        public async Task<IQueryable<Models.MsMisterM.MsMisterMComputer>> GetMsMisterMComputers(Query query = null)
+        public async Task<IQueryable<Models.MsMisterM.Computer>> GetComputers(Query query = null)
         {
-            var items = Context.MsMisterMComputers.AsQueryable();
+            var items = Context.Computers.AsQueryable();
             items = items.AsNoTracking();
 
             if (query != null)
@@ -92,7 +92,7 @@ namespace MisterM
                 }
             }
 
-            OnMsMisterMComputersRead(ref items);
+            OnComputersRead(ref items);
 
             return await Task.FromResult(items);
         }

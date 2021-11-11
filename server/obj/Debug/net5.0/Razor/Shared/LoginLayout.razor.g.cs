@@ -91,7 +91,7 @@ using MisterM.Models.MsMisterM;
             __builder.AddMarkupContent(7, "\n\n");
             __builder.OpenComponent<Radzen.Blazor.RadzenBody>(8);
             __builder.AddAttribute(9, "style", "margin-left: 0px");
-            __builder.AddAttribute(10, "Expanded", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(10, "Expanded", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 11 "C:\Users\jkosiakaite\OneDrive - 1ClickFactory\UNI\.net\MisterM\server\Shared\LoginLayout.razor"
                                                             true
@@ -111,15 +111,13 @@ using MisterM.Models.MsMisterM;
                     __builder3.OpenComponent<Radzen.Blazor.RadzenContentContainer>(19);
                     __builder3.AddAttribute(20, "Name", "main");
                     __builder3.AddAttribute(21, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder4) => {
-                        __builder4.AddContent(22, 
 #nullable restore
 #line 18 "C:\Users\jkosiakaite\OneDrive - 1ClickFactory\UNI\.net\MisterM\server\Shared\LoginLayout.razor"
-             Body
+__builder4.AddContent(22, Body);
 
 #line default
 #line hidden
 #nullable disable
-                        );
                     }
                     ));
                     __builder3.CloseComponent();
