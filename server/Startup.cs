@@ -21,6 +21,7 @@ using MisterM.Controllers;
 using MisterM.Data;
 using MisterM.Hubs;
 using Radzen;
+using StackExchange.Redis;
 
 // how to create connection guide: https://blazorhelpwebsite.com/ViewBlogPost/34
 
@@ -65,6 +66,10 @@ namespace MisterM
             {
               options.UseSqlServer(Configuration.GetConnectionString("MsMisterMConnection"));
             });
+            
+            // Redis db
+            services.AddSingleton<IConnectionMultiplexer>(
+                ConnectionMultiplexer.Connect(Configuration.GetConnectionString("RedisConnection")));
 
             services.AddRazorPages();
             services.AddServerSideBlazor().AddHubOptions(o =>

@@ -69,7 +69,7 @@ namespace MisterM.Controllers
 
         public Task<int> GetConnectedDeviceCount()
         {
-            return null;
+            return _deviceHubContext.ConnectedDevices
         }
     }
 }

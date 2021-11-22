@@ -42,7 +42,7 @@ namespace MisterM.Data
       set;
     }
 
-    public DbSet<MisterM.Models.MsMisterM.User> Users
+    public DbSet<User> Users
     {
       get;
       set;

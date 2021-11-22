@@ -104,6 +104,7 @@
   protected override async Task OnInitializedAsync()
   {
     TotalDevices = await ComputerController.GetComputerCount();
+    ActiveDevices = await ComputerController.GetConnectedDeviceCount();
     await base.OnInitializedAsync();
   }
 }
