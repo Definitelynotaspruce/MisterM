@@ -7,6 +7,8 @@
 @using Radzen.Blazor
 @using MisterM.Models.MsMisterM
 @using MisterM.Controllers
+@using Microsoft.AspNetCore.SignalR
+@using MisterM.Hubs
 <RadzenContent Container="main">
   <ChildContent>
     <RadzenLabel style="height: 42px; width: 229.40625px">
@@ -95,16 +97,15 @@
 
 @code
 {
-  [Inject]
-  protected ComputerController ComputerController { get; set; }
-
-  protected int ActiveDevices;
-  protected int TotalDevices;
-
   protected override async Task OnInitializedAsync()
   {
     TotalDevices = await ComputerController.GetComputerCount();
-    ActiveDevices = await ComputerController.GetConnectedDeviceCount();
+    ActiveDevices = ComputerController.GetConnectedDeviceCount();
+
+    ComputerController.ComputerChanged += UpdateComputer;
+    ComputerController.ComputerAdded += AddComputer;
+    DeviceReadingHub.ClientCountChanged += UpdateConnectedClients;
+    
     await base.OnInitializedAsync();
   }
 }

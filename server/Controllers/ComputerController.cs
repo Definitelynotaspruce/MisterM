@@ -1,6 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using MisterM.Data;
@@ -14,6 +14,10 @@ namespace MisterM.Controllers
     {
         private readonly MsMisterMContext _context;
         private readonly IHubContext<DeviceReadingHub> _deviceHubContext;
+
+        public static event EventHandler<Computer> ComputerAdded;
+        
+        public static event EventHandler<Computer> ComputerChanged;
 
         public ComputerController(MsMisterMContext context, IHubContext<DeviceReadingHub> deviceHubContext)
         {
@@ -37,21 +41,22 @@ namespace MisterM.Controllers
                 temperature = computerReading.Cpu.Temperature
             };
             _context.Computers.Add(computer);
-
             _context.SaveChanges();
+            OnComputerAdded(computer);
+            
             return computer;
         }
 
         public Computer UpdateComputer(ComputerReading computerReading)
         {
             Computer? computer = _context.Computers.SingleOrDefault(c => c.mac == computerReading.MAC);
-            if (computer != null)
-            {
-                computer.model = computerReading.Cpu.Name;
-                computer.name = computerReading.Name;
-                computer.temperature = computerReading.Cpu.Temperature;
-                _context.SaveChanges();
-            }
+            if (computer == null) return null;
+            
+            computer.model = computerReading.Cpu.Name;
+            computer.name = computerReading.Name;
+            computer.temperature = computerReading.Cpu.Temperature;
+            _context.SaveChanges();
+            OnComputerChanged(computer); 
 
             return computer;
         }
@@ -67,9 +72,19 @@ namespace MisterM.Controllers
             return _context.Computers.CountAsync();
         }
 
-        public Task<int> GetConnectedDeviceCount()
+        public static int GetConnectedDeviceCount()
         {
-            return _deviceHubContext.ConnectedDevices
+            return ConnectedDevices.Set.Count;
+        }
+
+        protected virtual void OnComputerAdded(Computer newComputer)
+        {
+            ComputerAdded?.Invoke(this, newComputer);
+        }
+
+        protected virtual void OnComputerChanged(Computer updatedComputer)
+        {
+            ComputerChanged?.Invoke(this, updatedComputer);
         }
     }
 }

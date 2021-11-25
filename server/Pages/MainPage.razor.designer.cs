@@ -9,6 +9,8 @@ using Radzen;
 using Radzen.Blazor;
 using MisterM.Models.MsMisterM;
 using Microsoft.EntityFrameworkCore;
+using MisterM.Controllers;
+using MisterM.Hubs;
 
 namespace MisterM.Pages
 {
@@ -46,7 +48,14 @@ namespace MisterM.Pages
 
         [Inject]
         protected MsMisterMService MsMisterM { get; set; }
+
+        [Inject] 
+        protected ComputerController ComputerController { get; set; }
+
         protected RadzenDataGrid<Computer> datagrid0;
+        
+        protected int ActiveDevices;
+        protected int TotalDevices;
 
         IEnumerable<Computer> _getComputersResult;
         protected IEnumerable<Computer> getComputersResult
