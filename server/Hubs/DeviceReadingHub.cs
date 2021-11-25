@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.SignalR;
 using MisterM.Controllers;
 using MisterM.Models.MsMisterM;
@@ -9,10 +8,15 @@ using MisterM.Structures;
 
 namespace MisterM.Hubs
 {
-    public class DeviceReadingHub : Hub
+    public static class ConnectedDevices
+    {
+        public static readonly Dictionary<string, Computer> Set = new();
+    }
+    
+    public sealed class DeviceReadingHub : Hub
     {
         private readonly ComputerController _computerController;
-        public readonly Dictionary<string, Computer> ConnectedDevices = new();
+        public static event EventHandler<int> ClientCountChanged;
         public DeviceReadingHub(ComputerController computerController)
         {
             _computerController = computerController;
@@ -26,13 +30,17 @@ namespace MisterM.Hubs
 
         public override Task OnConnectedAsync()
         {
-            ConnectedDevices.Add(Context.ConnectionId, new Computer()); 
+            ConnectedDevices.Set.Add(Context.ConnectionId, new Computer()); 
+            ClientCountChanged?.Invoke(this, ConnectedDevices.Set.Count);
+            
             return base.OnConnectedAsync();
         }
 
         public override Task OnDisconnectedAsync(Exception? exception)
         {
-            ConnectedDevices.Remove(Context.ConnectionId);
+            ConnectedDevices.Set.Remove(Context.ConnectionId);
+            ClientCountChanged?.Invoke(this, ConnectedDevices.Set.Count);
+            
             return base.OnDisconnectedAsync(exception);
         }
     }
