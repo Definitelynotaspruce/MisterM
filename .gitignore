@@ -3,3 +3,4 @@ obj/
 meta/
 .idea/
 .vs/
+.env
