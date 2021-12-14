@@ -5,7 +5,7 @@
     public record CPU
     {
         public string Name { get; set; } = "Generic CPU";
-        public float? Temperature { get; set; }
+        public float Temperature { get; set; } = 0.0F;
     }
 
     public struct ComputerReading
