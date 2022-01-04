@@ -1,5 +1,4 @@
 ﻿@page "/"
-@page "/main-page"
 @layout MainLayout
 @inherits MisterM.Pages.MainPageComponent
 
@@ -63,7 +62,7 @@
                 </RadzenIcon>
               </div>
               <div class="col-6" >
-                <RadzenHeading Size="H4" style="margin-bottom: 0px; text-align: center" Text="Average temperature">
+                <RadzenHeading Size="H4" style="margin-bottom: 0px; text-align: center" Text="Average °C">
                 </RadzenHeading>
                 <RadzenHeading Size="H4" style="border-radius: ; color: #cb6992; font-weight: bold; margin-bottom: 0px; text-align: center" Text="0">
                 </RadzenHeading>
@@ -89,9 +88,6 @@
         </RadzenDataGrid>
       </ChildContent>
     </RadzenFieldset>
-    <RadzenHtml>
-      <CustomOnClick Title="Test" Click="@CustomComponentClick" />
-    </RadzenHtml>
   </ChildContent>
 </RadzenContent>
 

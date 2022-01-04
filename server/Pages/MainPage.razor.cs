@@ -8,11 +8,6 @@ namespace MisterM.Pages
 {
     public partial class MainPageComponent
     {
-        protected void CustomComponentClick(MouseEventArgs args)
-        {
-            Console.WriteLine("Custom component clicked!");
-        }
-
         protected void AddComputer(object sender, Computer newComputer)
         {
             List<Computer> computerList = getComputersResult.ToList();

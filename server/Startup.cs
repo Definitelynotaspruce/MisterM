@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using MisterM.Controllers;
 using MisterM.Hubs;
+using MisterM.Services;
 using Radzen;
 
 // how to create connection guide: https://blazorhelpwebsite.com/ViewBlogPost/34
@@ -48,6 +49,8 @@ namespace MisterM
 
             //scoped creates an instance for each user 
             services.AddScoped<MsMisterMService>();
+
+            services.AddSingleton<MisterMProviderService>();
 
             // set the database connection for the MSMisterM 
             services.AddDbContext<MisterM.Data.MsMisterMContext>(options =>

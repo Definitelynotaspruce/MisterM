@@ -9,6 +9,9 @@ namespace MisterM.Pages
 {
     public partial class DownloadComponent
     {
-
+        protected Task DownloadMisterM()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
