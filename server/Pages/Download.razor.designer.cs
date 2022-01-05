@@ -9,6 +9,7 @@ using Radzen;
 using Radzen.Blazor;
 using MisterM.Models.MsMisterM;
 using Microsoft.EntityFrameworkCore;
+using MisterM.Services;
 
 namespace MisterM.Pages
 {
@@ -46,5 +47,8 @@ namespace MisterM.Pages
 
         [Inject]
         protected MsMisterMService MsMisterM { get; set; }
+        
+        [Inject]
+        protected MisterMProviderService MisterMProviderService { get; set; }
     }
 }
