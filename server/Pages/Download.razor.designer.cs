@@ -47,8 +47,5 @@ namespace MisterM.Pages
 
         [Inject]
         protected MsMisterMService MsMisterM { get; set; }
-        
-        [Inject]
-        protected MisterMProviderService MisterMProviderService { get; set; }
     }
 }

@@ -9,6 +9,13 @@
     <ChildContent>
         <RadzenHeading Size="H1" Text="Download">
         </RadzenHeading>
-        <RadzenButton Click="DownloadMisterM" Text="Download MisterM Service"/>
+        <RadzenButton Click="() => UriHelper.NavigateTo(x86_path, true)" Text="Download MisterM Service x86"/>
+        <RadzenButton Click="() => UriHelper.NavigateTo(x64_path, true)" Text="Download MisterM Service x64"/>
     </ChildContent>
 </RadzenContent>
+
+@code
+{
+    private readonly string x86_path = "download/x86";
+    private readonly string x64_path = "download/x64";
+}

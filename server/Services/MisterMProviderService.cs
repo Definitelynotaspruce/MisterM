@@ -12,8 +12,8 @@ namespace MisterM.Services
         private readonly IWebHostEnvironment _env;
         
         private readonly string _misterMBinaryPath;
-        private readonly string _x64Bin = "MisterM_x64.zip";
-        private readonly string _x86Bin = "MisterM_x86.zip";
+        public readonly string _x64Bin = "MisterM_x64.zip";
+        public readonly string _x86Bin = "MisterM_x86.zip";
 
         public MisterMProviderService(IConfiguration configuration, IWebHostEnvironment env)
         {
@@ -41,26 +41,15 @@ namespace MisterM.Services
                 Uri mistermBin86Address =
                     new Uri(_configuration.GetSection("DownloadUrls").GetSection("MisterM_x86").Value);
                 
-                // if (mistermBinAddress == string.Empty)
-                //     throw "Address is empty";
-                    
-                client.DownloadFileAsync(mistermBin64Address, bin64Path);
-                client.DownloadFileCompleted += (sender, args) =>
-                {
-                    client.DownloadFileAsync(mistermBin86Address, bin86Path);
-                };
+                client.DownloadFile(mistermBin64Address, bin64Path);
+                client.DownloadFile(mistermBin86Address, bin86Path);
             }
         }
 
-        public FileStream GetFileStream(bool bit64)
+        public FileStream GetFileStream(bool bit64 = false)
         {
             string binPath =
                 bit64 ? Path.Combine(_misterMBinaryPath, _x64Bin) : Path.Combine(_misterMBinaryPath, _x86Bin);
-            
-            if (!File.Exists(binPath))
-            {
-                // throw ApplicationException;
-            }
 
             return File.OpenRead(binPath);
         }
