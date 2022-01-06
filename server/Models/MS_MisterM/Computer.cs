@@ -3,29 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MisterM.Models.MsMisterM
 {
-  [Table("Computers", Schema = "dbo")]
-  public partial class Computer
-  {
-    [Key]
-    public string mac
+    [Table("Computers", Schema = "dbo")]
+    public partial class Computer
     {
-      get;
-      set;
+        [Key] public string mac { get; set; }
+        public string name { get; set; }
+        public string model { get; set; }
+        public float? temperature { get; set; }
     }
-    public string name
-    {
-      get;
-      set;
-    }
-    public string model
-    {
-      get;
-      set;
-    }
-    public float? temperature
-    {
-      get;
-      set;
-    }
-  }
 }

@@ -12,11 +12,12 @@ namespace MisterM.Hubs
     {
         public static readonly Dictionary<string, Computer> Set = new();
     }
-    
+
     public sealed class DeviceReadingHub : Hub
     {
         private readonly ComputerController _computerController;
         public static event EventHandler<int> ClientCountChanged;
+
         public DeviceReadingHub(ComputerController computerController)
         {
             _computerController = computerController;
@@ -24,15 +25,15 @@ namespace MisterM.Hubs
 
         public async Task<ComputerReading> SetReadings(ComputerReading computerReading)
         {
-            _computerController.CreateOrUpdateComputer(computerReading);
+            ConnectedDevices.Set[Context.ConnectionId] = _computerController.CreateOrUpdateComputer(computerReading);
             return computerReading;
         }
 
         public override Task OnConnectedAsync()
         {
-            ConnectedDevices.Set.Add(Context.ConnectionId, new Computer()); 
+            ConnectedDevices.Set.Add(Context.ConnectionId, new Computer());
             ClientCountChanged?.Invoke(this, ConnectedDevices.Set.Count);
-            
+
             return base.OnConnectedAsync();
         }
 
@@ -40,7 +41,7 @@ namespace MisterM.Hubs
         {
             ConnectedDevices.Set.Remove(Context.ConnectionId);
             ClientCountChanged?.Invoke(this, ConnectedDevices.Set.Count);
-            
+
             return base.OnDisconnectedAsync(exception);
         }
     }

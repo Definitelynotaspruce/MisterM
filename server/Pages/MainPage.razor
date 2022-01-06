@@ -76,6 +76,11 @@
       <ChildContent>
         <RadzenDataGrid @ref="datagrid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getComputersResult" TItem="MisterM.Models.MsMisterM.Computer" PageSize="10">
           <Columns>
+            <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="online" Title="Status">
+              <Template Context="computer">
+                <StatusIcon IsOnline="IsComputerOnline(computer.mac)"></StatusIcon>
+              </Template>
+            </RadzenDataGridColumn>
             <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="mac" Title="Mac">
             </RadzenDataGridColumn>
             <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="name" Title="Name">

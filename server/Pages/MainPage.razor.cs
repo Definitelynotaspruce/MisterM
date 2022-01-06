@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Components.Web;
+using MisterM.Hubs;
 using MisterM.Models.MsMisterM;
 
 namespace MisterM.Pages
@@ -26,6 +27,11 @@ namespace MisterM.Pages
         {
             ActiveDevices = clientCount;
             Reload();
+        }
+
+        protected static bool IsComputerOnline(string mac)
+        {
+            return ConnectedDevices.Set.Values.Any(computerVal => computerVal.mac == mac);
         }
     }
 }
