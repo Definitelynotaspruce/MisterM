@@ -17,14 +17,14 @@ namespace MisterM.Controllers
         public FileStreamResult DownloadMisterMBinary_x86()
         {
             return new FileStreamResult(_mProviderService.GetFileStream(), "application/octet-stream")
-                {FileDownloadName = _mProviderService._x86Bin};
+                {FileDownloadName = _mProviderService.X86Bin};
         }
         
         [HttpGet("/download/x64")]
         public FileStreamResult DownloadMisterMBinary_x64()
         {
             return new FileStreamResult(_mProviderService.GetFileStream(true), "application/octet-stream")
-                {FileDownloadName = _mProviderService._x64Bin};
+                {FileDownloadName = _mProviderService.X64Bin};
         }
     }
 }
