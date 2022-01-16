@@ -72,11 +72,11 @@
         </RadzenCard>
       </div>
     </div>
-    <RadzenFieldset AllowCollapse="false" style="height: 296.140625px; margin-left: 10px; width: 50%" Text="Last active devices" >
+    <RadzenFieldset AllowCollapse="false" style="height: 296.140625px; margin-left: 10px; width: 100%" Text="Last active devices" >
       <ChildContent>
         <RadzenDataGrid @ref="datagrid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getComputersResult" TItem="MisterM.Models.MsMisterM.Computer" PageSize="10">
           <Columns>
-            <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="online" Title="Status">
+            <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="mac" Title="Status">
               <Template Context="computer">
                 <StatusIcon IsOnline="IsComputerOnline(computer.mac)"></StatusIcon>
               </Template>

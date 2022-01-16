@@ -49,7 +49,7 @@ namespace MisterM.Controllers
 
         public Computer UpdateComputer(ComputerReading computerReading)
         {
-            Computer? computer = _context.Computers.SingleOrDefault(c => c.mac == computerReading.MAC);
+            Computer? computer = _context.Computers.Find(computerReading.MAC);
             if (computer == null) return null;
             
             computer.model = computerReading.Cpu.Name;
