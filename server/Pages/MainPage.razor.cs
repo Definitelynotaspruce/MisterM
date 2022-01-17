@@ -11,16 +11,19 @@ namespace MisterM.Pages
     {
         protected void AddComputer(object sender, Computer newComputer)
         {
-            List<Computer> computerList = getComputersResult.ToList();
-            computerList.Add(newComputer);
-            getComputersResult = computerList;
+            var computers = getComputersResult.ToList();
+            computers.Add(newComputer);
+            getComputersResult = computers;
         }
 
         protected void UpdateComputer(object sender, Computer updatedComputer)
         {
-            List<Computer> modifiedComputers = getComputersResult.Where(c => c.mac != updatedComputer.mac).ToList();
-            modifiedComputers.Add(updatedComputer);
-            getComputersResult = modifiedComputers;
+            var computers = getComputersResult.ToList();
+            int index = computers.FindIndex(c => c.mac == updatedComputer.mac);
+            if (index == -1)
+                return;
+            computers[index] = updatedComputer;
+            getComputersResult = computers;
         }
 
         protected void UpdateConnectedClients(object sender, int clientCount)
