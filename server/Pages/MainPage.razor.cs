@@ -33,5 +33,13 @@ namespace MisterM.Pages
         {
             return ConnectedDevices.Set.Values.Any(computerVal => computerVal.mac == mac);
         }
+
+        protected float GetAverageTemperature()
+        {
+            if (getComputersResult == null) return 0;
+            IEnumerable<Computer> activeComputers = getComputersResult.Where(computer => IsComputerOnline(computer.mac));
+            return activeComputers.Average(c => c.temperature) ?? 0;
+        }
+
     }
 }
