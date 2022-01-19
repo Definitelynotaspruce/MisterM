@@ -95,6 +95,7 @@ namespace MisterM.Services
 
         public FileStream GetFileStream(bool bit64 = false)
         {
+            // TODO: Check if path is a file (currently downloads even if resource URL is not a file
             string binPath =
                 bit64 ? Path.Combine(_misterMBinaryPath, X64Bin) : Path.Combine(_misterMBinaryPath, X86Bin);
 
