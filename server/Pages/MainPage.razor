@@ -75,14 +75,32 @@
                                 @string.Join(":", Enumerable.Range(0, 6).Select(i => computer.mac.Substring(i * 2, 2)))
                             </Template>
                         </RadzenDataGridColumn>
-                        <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="name" Title="Name">
+                        <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="chassis_type" Title="Chassis">
                         </RadzenDataGridColumn>
-                        <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="model" Title="Model">
+                        <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="serial_number" Title="Serial Number">
                         </RadzenDataGridColumn>
-                        <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="temperature" Title="Temperature" Width="130px">
+                        <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="motherboard_name" Title="Motherboard">
+                        </RadzenDataGridColumn>
+                        <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="cpu_model" Title="CPU">
+                        </RadzenDataGridColumn>
+                        <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="cpu_load" Title="CPU Load">
+                            <Template Context="computer">
+                                @string.Concat(computer.cpu_load.ToString(), " %")
+                            </Template>
+                        </RadzenDataGridColumn>
+                        <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="cpu_temperature" Title="CPU °C" Width="130px">
                             <Template Context="computer">
                                 @string.Concat(computer.cpu_temperature.ToString(), " °C")
                             </Template>
+                        </RadzenDataGridColumn>
+                        <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="" Title="Max CPU °C" Width="130px">
+                            <Template Context="computer">
+                                @string.Concat(computer.cpu_max_temperature.ToString(), " °C")
+                            </Template>
+                        </RadzenDataGridColumn>
+                        <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="used_ram" Title="Used RAM">
+                        </RadzenDataGridColumn>
+                        <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="total_ram" Title="Total RAM">
                         </RadzenDataGridColumn>
                     </Columns>
                 </RadzenDataGrid>

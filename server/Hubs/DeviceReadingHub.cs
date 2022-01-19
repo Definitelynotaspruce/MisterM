@@ -26,7 +26,6 @@ namespace MisterM.Hubs
         public async Task<ComputerReading> SetReadings(ComputerReading computerReading)
         {
             ConnectedDevices.Set[Context.ConnectionId] = _computerController.CreateOrUpdateComputer(computerReading);
-            Console.Out.WriteLine(computerReading.Motherboard.SerialNumber);
             return computerReading;
         }
 
