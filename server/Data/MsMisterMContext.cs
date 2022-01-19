@@ -30,8 +30,8 @@ namespace MisterM.Data
 
 
         builder.Entity<Computer>()
-              .Property(p => p.temperature)
-              .HasPrecision(24, 0);
+          .Property(p => p.cpu_temperature)
+          .HasPrecision(24, 0);
         this.OnModelBuilding(builder);
     }
 

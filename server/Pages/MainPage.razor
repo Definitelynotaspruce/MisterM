@@ -81,7 +81,7 @@
                         </RadzenDataGridColumn>
                         <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="temperature" Title="Temperature" Width="130px">
                             <Template Context="computer">
-                                @string.Concat(computer.temperature.ToString(), " °C")
+                                @string.Concat(computer.cpu_temperature.ToString(), " °C")
                             </Template>
                         </RadzenDataGridColumn>
                     </Columns>

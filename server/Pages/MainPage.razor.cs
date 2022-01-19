@@ -41,7 +41,7 @@ namespace MisterM.Pages
         {
             if (getComputersResult == null) return 0;
             IEnumerable<Computer> activeComputers = getComputersResult.Where(computer => IsComputerOnline(computer.mac));
-            return activeComputers.Average(c => c.temperature) ?? 0;
+            return activeComputers.Average(c => c.cpu_temperature) ?? 0;
         }
 
     }
