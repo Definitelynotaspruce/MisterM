@@ -6,16 +6,44 @@
 @using Radzen.Blazor
 @using MisterM.Models.MsMisterM
 <RadzenContent Container="main">
-    <ChildContent>
+    <ChildContent>        
         <RadzenHeading Size="H1" Text="Download">
         </RadzenHeading>
-        <RadzenButton Click="() => UriHelper.NavigateTo(x86_path, true)" Text="Download MisterM Service x86"/>
-        <RadzenButton Click="() => UriHelper.NavigateTo(x64_path, true)" Text="Download MisterM Service x64"/>
+        <h1>Download MisterM Service</h1>
+        <p>Use at your own risk.</p>       
+        <div class="row px-3"> 
+            <div class="col-md-12 ">
+                 <RadzenCard>
+                     <h2 class="mb-1">Instalation instructions: </h2>
+                     <h3 class="mb-1">1. Download the script</h3>
+                     <h3 class="mb-1">2. Extract the file (<i>.rar</i> or <i>.zip</i> extension)</h3>
+                     <h3 class="mb-1">3. Run <i>setup.bat</i></h3>
+                     <h3 class="mb-1">4. Follow the instructions in the script</h3>
+                     <h3 class="mb-1">5. Enjoy.</h3>
+                     <h4 class="mb-1">* <i><b>NOTE:</b> you may need to mark the script as <b>approved</b> for it to launch</i>.</h4>
+                     <h4 class="mb-1"> <i>Here is a <a href="https://www.thewindowsclub.com/microsoft-defender-smartscreen-prevented-an-unrecognized-app-from-starting">link</a> that explains how to launch unrecognised apps</i>.</h4>
+                  </RadzenCard>                      
+            </div>            
+        </div>
+        <div class="row px-3" style="text-align:center">
+            <div class="col-md-3 p-3">
+                 <RadzenCard>
+                     <h4 class="mb-3">Download MisterM Service x86</h4>
+                     <RadzenButton Click="() => UriHelper.NavigateTo(x86_path, true)" Text="Download x86"/>
+                </RadzenCard>
+            </div>
+            <div class="col-md-3 p-3">
+                 <RadzenCard>
+                     <h4 class="mb-3">Download MisterM Service x64</h4>
+                     <RadzenButton Click="() => UriHelper.NavigateTo(x64_path, true)" Text="Download x64"/> 
+                </RadzenCard>
+            </div>            
+        </div>
     </ChildContent>
 </RadzenContent>
 
 @code
 {
     private readonly string x86_path = "download/x86";
-    private readonly string x64_path = "download/x64";
+    private readonly string x64_path = "download/x64";    
 }
