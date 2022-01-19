@@ -10,6 +10,7 @@
         <RadzenHeading Size="H1" Text="Asset Information">
         </RadzenHeading>
         <h1>Asset info</h1>
+        @* first row *@
          <div class="row px-3" style="text-align:center">
             <div class="col-md-3 p-3">
                  <RadzenCard>
@@ -29,8 +30,8 @@
             </div>
             <div class="col-md-3 p-3">
                  <RadzenCard>
-                     <h2 class="mb-3">CPU temperature:</h2>
-                     <h3 class="mb-3">99 </h3>
+                     <h2 class="mb-3">CPU load:</h2>
+                     <h3 class="mb-3">99%</h3>
                      <h2 class="mb-3">Max CPU temp:</h2>
                      <h3 class="mb-3">120</h3>
                 </RadzenCard>
@@ -42,7 +43,40 @@
                     <h3 style="position:relative; margin-top:-100px;">CPU temperature</h3>
                 </RadzenCard>
             </div>
-        </div>       
+        </div> 
+        @* second row *@
+         <div class="row px-3" style="text-align:center">
+              <div class="col-md-3 p-3">
+                 <RadzenCard>
+                     <h2 class="mb-3">Total drive size:</h2>
+                     <h3 class="mb-3">60gb</h3>
+                     <h2 class="mb-3">Available memory:</h2>
+                     <h3 class="mb-3">20gb</h3>
+                </RadzenCard>
+            </div>
+            <div class="col-md-3 p-3">
+                 <RadzenCard>
+                    <p style="position:relative; margin-top:-50px;"> </p>
+                    <PieChart></PieChart>
+                    <p style="position:relative; margin-top:-50px;"> </p>
+                </RadzenCard>
+            </div>
+            <div class="col-md-3 p-3">
+                 <RadzenCard>
+                     <h2 class="mb-3">Total RAM:</h2>
+                     <h3 class="mb-3">16GB</h3>
+                     <h2 class="mb-3">RAM used:</h2>
+                     <h3 class="mb-3">12GB</h3>
+                </RadzenCard>
+            </div>
+            <div class="col-md-3 p-3">                
+                <RadzenCard>
+                    
+                    <Arc ></Arc>
+                 
+                </RadzenCard>
+            </div>
+         </div>
     </ChildContent>
 </RadzenContent>
 

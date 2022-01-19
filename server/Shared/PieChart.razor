@@ -1,0 +1,34 @@
+﻿@using Radzen.Blazor
+
+                <RadzenChart>
+                    <RadzenDonutSeries Data="@revenue" CategoryProperty="Quarter" ValueProperty="Revenue">
+                        <TitleTemplate>
+                            <div class="rz-donut-content">
+                                <div>Drive</div> 
+                                <div>memory</div>
+                            </div>
+                        </TitleTemplate>
+                    </RadzenDonutSeries>
+                </RadzenChart>
+
+
+@code {
+    class DataItem
+    {
+        public string Quarter { get; set; }
+        public double Revenue { get; set; }
+    }
+
+    DataItem[] revenue = new DataItem[] {
+    new DataItem
+    {
+    Quarter = "Used",
+    Revenue = 30000
+    },
+    new DataItem
+    {
+    Quarter = "Free",
+    Revenue = 40000
+    },
+    };
+}
