@@ -1,13 +1,53 @@
-﻿@page "/info-card"
+﻿@page "/InfoCard"
 @layout MainLayout
-@inherits MisterM.Pages.InfoCardComponent
+@inherits MisterM.Pages.DownloadComponent
 
 @using Radzen
 @using Radzen.Blazor
 @using MisterM.Models.MsMisterM
 <RadzenContent Container="main">
-  <ChildContent>
-    <RadzenHeading Size="H1" Text="Asset information">
-    </RadzenHeading>
-  </ChildContent>
+    <ChildContent>        
+        <RadzenHeading Size="H1" Text="Asset Information">
+        </RadzenHeading>
+        <h1>Asset info</h1>
+         <div class="row px-3" style="text-align:center">
+            <div class="col-md-3 p-3">
+                 <RadzenCard>
+                     <h2 class="mb-3">Serial number:</h2>
+                     <h3 class="mb-3">asdffasdfasdfasdf</h3>
+                     <h2 class="mb-3">MAC address:</h2>
+                     <h3 class="mb-3">ABS:DASDG:SFFS:DDDD</h3>
+                </RadzenCard>
+            </div>
+            <div class="col-md-3 p-3">
+                 <RadzenCard>
+                     <h2 class="mb-3">Processor:</h2>
+                     <h3 class="mb-3">Intel nuke lklskjdflajksflasdj</h3>
+                     <h2 class="mb-3">Clock speed:</h2>
+                     <h3 class="mb-3">645546345645645</h3>
+                </RadzenCard>
+            </div>
+            <div class="col-md-3 p-3">
+                 <RadzenCard>
+                     <h2 class="mb-3">CPU temperature:</h2>
+                     <h3 class="mb-3">99 </h3>
+                     <h2 class="mb-3">Max CPU temp:</h2>
+                     <h3 class="mb-3">120</h3>
+                </RadzenCard>
+            </div>
+            <div class="col-md-3 p-3">                
+                <RadzenCard>
+                    <p style="position:relative; margin-top:-45px;"> </p>
+                    <ArcGauge ></ArcGauge>
+                    <h3 style="position:relative; margin-top:-100px;">CPU temperature</h3>
+                </RadzenCard>
+            </div>
+        </div>       
+    </ChildContent>
 </RadzenContent>
+
+@code
+{
+    private readonly string x86_path = "download/x86";
+    private readonly string x64_path = "download/x64";    
+}
