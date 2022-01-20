@@ -1,17 +1,23 @@
-﻿@using Radzen.Blazor     
-   <RadzenArcGauge Style="width: 100%; height: 200px;">
-                <RadzenArcGaugeScale Step="20" Min="0" Max="32" MinorStep="2" Radius="1.5" TickPosition=@tickPosition Y="0.9" Margin="0">
-                    <RadzenArcGaugeScaleValue Value=@value ShowValue=@showValue>
-                        <Template Context="pointer">
-                            <h4>
-                                @pointer.Value GB of RAM used
-                            </h4>
-                        </Template>
-                    </RadzenArcGaugeScaleValue>
-                </RadzenArcGaugeScale>
-            </RadzenArcGauge>
+﻿@using Radzen.Blazor
+<RadzenArcGauge Style="width: 100%; height: 200px;">
+    <RadzenArcGaugeScale Step="20" Min="0" Max="@Max" MinorStep="2" Radius="1.5" TickPosition=@tickPosition Y="0.9" Margin="0">
+        <RadzenArcGaugeScaleValue Value=@Value ShowValue=@true>
+            <Template Context="pointer">
+                <h4>
+                    @pointer.Value.ToString("0.00") / @Max.ToString("0.00") GB of RAM used
+                </h4>
+            </Template>
+        </RadzenArcGaugeScaleValue>
+    </RadzenArcGaugeScale>
+</RadzenArcGauge>
+
 @code {
-    bool showValue = true;
-    double value = 16;
+
+    [Parameter]
+    public float Value { get; set; }
+    
+    [Parameter]
+    public float Max { get; set; }
+
     GaugeTickPosition tickPosition = GaugeTickPosition.None;
 }

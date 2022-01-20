@@ -1,87 +1,116 @@
-﻿@page "/InfoCard"
+﻿@page "/InfoCard/{MAC}"
 @layout MainLayout
 @inherits MisterM.Pages.DownloadComponent
 
 @using Radzen
 @using Radzen.Blazor
 @using MisterM.Models.MsMisterM
+@using MisterM.Data
+@using System.Linq.Dynamic.Core
+@using MisterM.Controllers
 <RadzenContent Container="main">
-    <ChildContent>        
+    <ChildContent>
         <RadzenHeading Size="H1" Text="Asset Information">
         </RadzenHeading>
-        <h1>Asset info</h1>
         @* first row *@
-         <div class="row px-3" style="text-align:center">
+        <div class="row px-3" style="text-align:center">
             <div class="col-md-3 p-3">
-                 <RadzenCard>
-                     <h2 class="mb-3">Serial number:</h2>
-                     <h3 class="mb-3">asdffasdfasdfasdf</h3>
-                     <h2 class="mb-3">MAC address:</h2>
-                     <h3 class="mb-3">ABS:DASDG:SFFS:DDDD</h3>
+                <RadzenCard>
+                    <h2 class="mb-3">Serial number: </h2>
+                    <h3 class="mb-3">@_computer.serial_number</h3>
+                    <h2 class="mb-3">MAC address:</h2>
+                    <h3 class="mb-3">@string.Join(":", Enumerable.Range(0, 6).Select(i => _computer.mac.Substring(i * 2, 2)))</h3>
                 </RadzenCard>
             </div>
             <div class="col-md-3 p-3">
-                 <RadzenCard>
-                     <h2 class="mb-3">Processor:</h2>
-                     <h3 class="mb-3">Intel nuke lklskjdflajksflasdj</h3>
-                     <h2 class="mb-3">Clock speed:</h2>
-                     <h3 class="mb-3">645546345645645</h3>
+                <RadzenCard>
+                    <h2 class="mb-3">Processor:</h2>
+                    <h3 class="mb-3">@_computer.cpu_model</h3>
+                    <h2 class="mb-3">Clock speed:</h2>
+                    <h3 class="mb-3">@_computer.cpu_average_clock_speed?.ToString("0.00") MHz</h3>
                 </RadzenCard>
             </div>
             <div class="col-md-3 p-3">
-                 <RadzenCard>
-                     <h2 class="mb-3">CPU load:</h2>
-                     <h3 class="mb-3">99%</h3>
-                     <h2 class="mb-3">Max CPU temp:</h2>
-                     <h3 class="mb-3">120</h3>
+                <RadzenCard>
+                    <h2 class="mb-3">CPU load:</h2>
+                    <h3 class="mb-3">@_computer.cpu_load?.ToString("0.00") %</h3>
+                    <h2 class="mb-3">Max CPU temp:</h2>
+                    <h3 class="mb-3">@_computer.cpu_max_temperature?.ToString("0") °C</h3>
                 </RadzenCard>
             </div>
-            <div class="col-md-3 p-3">                
+            <div class="col-md-3 p-3">
                 <RadzenCard>
                     <p style="position:relative; margin-top:-45px;"> </p>
-                    <ArcGauge ></ArcGauge>
+                    <ArcGauge CurrentValue="_computer.cpu_temperature ?? 0" MaxValue="_computer.cpu_max_temperature ?? 100"></ArcGauge>
                     <h3 style="position:relative; margin-top:-100px;">CPU temperature</h3>
                 </RadzenCard>
             </div>
-        </div> 
+        </div>
         @* second row *@
-         <div class="row px-3" style="text-align:center">
-              <div class="col-md-3 p-3">
-                 <RadzenCard>
-                     <h2 class="mb-3">Total drive size:</h2>
-                     <h3 class="mb-3">60gb</h3>
-                     <h2 class="mb-3">Available memory:</h2>
-                     <h3 class="mb-3">20gb</h3>
-                </RadzenCard>
-            </div>
+        <div class="row px-3" style="text-align:center">
             <div class="col-md-3 p-3">
-                 <RadzenCard>
-                    <p style="position:relative; margin-top:-50px;"> </p>
-                    <PieChart></PieChart>
-                    <p style="position:relative; margin-top:-50px;"> </p>
-                </RadzenCard>
-            </div>
-            <div class="col-md-3 p-3">
-                 <RadzenCard>
-                     <h2 class="mb-3">Total RAM:</h2>
-                     <h3 class="mb-3">16GB</h3>
-                     <h2 class="mb-3">RAM used:</h2>
-                     <h3 class="mb-3">12GB</h3>
-                </RadzenCard>
-            </div>
-            <div class="col-md-3 p-3">                
                 <RadzenCard>
-                    
-                    <Arc ></Arc>
-                 
+                    <h2 class="mb-3">Total drive size:</h2>
+                    <h3 class="mb-3">@BytesToGigabytes(_computer.total_storage) GB</h3>
+                    <h2 class="mb-3">Available storage:</h2>
+                    <h3 class="mb-3">@BytesToGigabytes(_computer.total_storage - @_computer.total_used_storage) GB</h3>
                 </RadzenCard>
             </div>
-         </div>
+            <div class="col-md-3 p-3">
+                <RadzenCard>
+                    <p style="position:relative; margin-top:-50px;"> </p>
+                    <PieChart Used="_computer.total_used_storage" Free="(_computer.total_storage - _computer.total_used_storage)"></PieChart>
+                    <p style="position:relative; margin-top:-50px;"> </p>
+                </RadzenCard>
+            </div>
+            <div class="col-md-3 p-3">
+                <RadzenCard>
+                    <h2 class="mb-3">Total RAM:</h2>
+                    <h3 class="mb-3">@_computer.total_ram.ToString("0.00") GB</h3>
+                    <h2 class="mb-3">RAM used:</h2>
+                    <h3 class="mb-3">@_computer.used_ram.ToString("0.00") GB</h3>
+                </RadzenCard>
+            </div>
+            <div class="col-md-3 p-3">
+                <RadzenCard>
+
+                    <Arc Value="@_computer.used_ram" Max="@_computer.total_ram"></Arc>
+
+                </RadzenCard>
+            </div>
+        </div>
     </ChildContent>
 </RadzenContent>
 
 @code
 {
-    private readonly string x86_path = "download/x86";
-    private readonly string x64_path = "download/x64";    
+    [Parameter]
+    public string MAC { get; set; }
+
+    [Inject]
+    private MsMisterMContext _context { get; set; }
+
+    Computer? _computer;
+
+    protected override void OnInitialized()
+    {
+        _computer = _context.Computers.FirstOrDefault(c => c.mac == MAC);
+        ComputerController.ComputerChanged += UpdateComputer;
+        
+        base.OnInitialized();
+    }
+
+    private void UpdateComputer(object? sender, Computer e)
+    {
+        if (_computer != null && e.mac == _computer.mac)
+        {
+            _computer = e;
+            Reload();
+        }
+    }
+
+    protected double BytesToGigabytes(long bytes)
+    {
+        return bytes / 1024 / 1024 / 1024;
+    }
 }

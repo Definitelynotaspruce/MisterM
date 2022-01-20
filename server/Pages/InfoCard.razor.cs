@@ -9,6 +9,6 @@ namespace MisterM.Pages
 {
     public partial class InfoCardComponent
     {
-
+        
     }
 }

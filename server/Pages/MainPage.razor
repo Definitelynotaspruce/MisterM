@@ -63,7 +63,7 @@
         </div>
         <RadzenFieldset AllowCollapse="false" style="height: 296.140625px; margin-left: 10px; width: 100%" Text="Last active devices">
             <ChildContent>
-                <RadzenDataGrid @ref="datagrid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getComputersResult" TItem="MisterM.Models.MsMisterM.Computer" PageSize="10">
+                <RadzenDataGrid @ref="datagrid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getComputersResult" TItem="MisterM.Models.MsMisterM.Computer" PageSize="10" RowDoubleClick="AssetDoubleClickCallback">
                     <Columns>
                         <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="mac" Title="Status" Width="70px" Filterable="false">
                             <Template Context="computer">
@@ -85,7 +85,7 @@
                         </RadzenDataGridColumn>
                         <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="cpu_load" Title="CPU Load">
                             <Template Context="computer">
-                                @string.Concat(computer.cpu_load.ToString(), " %")
+                                @string.Concat(computer.cpu_load?.ToString("0.00"), " %")
                             </Template>
                         </RadzenDataGridColumn>
                         <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="cpu_temperature" Title="CPU °C" Width="130px">
@@ -99,8 +99,14 @@
                             </Template>
                         </RadzenDataGridColumn>
                         <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="used_ram" Title="Used RAM">
+                            <Template Context="computer">
+                                @string.Concat(computer.used_ram.ToString("0.00"), " GB")
+                            </Template>
                         </RadzenDataGridColumn>
                         <RadzenDataGridColumn TItem="MisterM.Models.MsMisterM.Computer" Property="total_ram" Title="Total RAM">
+                            <Template Context="computer">
+                                @string.Concat(computer.total_ram.ToString("0.00"), " GB")
+                            </Template>
                         </RadzenDataGridColumn>
                     </Columns>
                 </RadzenDataGrid>
@@ -121,5 +127,17 @@
         DeviceReadingHub.ClientCountChanged += UpdateConnectedClients;
 
         await base.OnInitializedAsync();
+    }
+
+    private async Task AssetDoubleClickCallback(DataGridRowMouseEventArgs<Computer> obj)
+    {
+        await DialogService.OpenAsync<InfoCard>("", new Dictionary<string, object> {{"MAC", obj.Data.mac}}, new DialogOptions
+        {
+            Width = "80%",
+            Height = "80%",
+            Resizable = true,
+            Draggable = true,
+            CloseDialogOnOverlayClick = true
+        });
     }
 }

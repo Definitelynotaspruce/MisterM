@@ -1,23 +1,18 @@
-﻿@using Radzen.Blazor
- 
-      
-            <RadzenRadialGauge Style="width:  100%; height: 300px;">
-                <RadzenRadialGaugeScale StartAngle="-120" EndAngle="120" Step="20" Min="0" Max="200" TickPosition=@tickPosition>
-                    <RadzenRadialGaugeScalePointer Value=@value Length="0.6" ShowValue=@showValue>
-                        <Template Context="pointer">
-                            <h4>
-                                @pointer.Value <sup>°C</sup>
-                            </h4>
-                        </Template>
-                    </RadzenRadialGaugeScalePointer>
-                    <RadzenRadialGaugeScaleRange From="0" To="60" Fill="green" />
-                    <RadzenRadialGaugeScaleRange From="60" To="90" Fill="orange" />
-                    <RadzenRadialGaugeScaleRange From="90" To="200" Fill="red" />
-                </RadzenRadialGaugeScale>
-            </RadzenRadialGauge>
-       
-@code {
-    bool showValue = true;
-    double value = 50; // temperature of the CPU goes here
-    GaugeTickPosition tickPosition = GaugeTickPosition.Inside;
-}
+﻿@inherits ArcGaugeComponent
+@using Radzen.Blazor
+
+
+<RadzenRadialGauge Style="width:  100%; height: 300px;">
+    <RadzenRadialGaugeScale StartAngle="-120" EndAngle="120" Step="20" Min="0" Max="MaxValue" TickPosition=@GaugeTickPosition.Inside>
+        <RadzenRadialGaugeScalePointer Value=@CurrentValue Length="0.6" ShowValue=@true>
+            <Template Context="pointer">
+                <h4>
+                    @pointer.Value <sup>°C</sup>
+                </h4>
+            </Template>
+        </RadzenRadialGaugeScalePointer>
+        <RadzenRadialGaugeScaleRange From="0" To="MaxValue * 0.4" Fill="green"/>
+        <RadzenRadialGaugeScaleRange From="MaxValue * 0.4" To="MaxValue * 0.8" Fill="orange"/>
+        <RadzenRadialGaugeScaleRange From="MaxValue * 0.8" To="MaxValue" Fill="red"/>
+    </RadzenRadialGaugeScale>
+</RadzenRadialGauge>

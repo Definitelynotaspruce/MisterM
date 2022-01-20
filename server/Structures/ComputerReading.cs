@@ -2,16 +2,16 @@
 
 namespace MisterM.Structures
 {
-    public abstract record Memory
+    public abstract record Memory<T>
     {
         public string Name { get; set; } = "Generic Memory";
-        public float Used { get; set; } = 0;
-        public float Total { get; set; } = 0;
+        public T Used { get; set; } 
+        public T Total { get; set; } 
     };
 
-    public record RAM : Memory;
+    public record RAM : Memory<float>;
 
-    public record Storage : Memory;
+    public record Storage : Memory<long>;
 
     public record CPU
     {
