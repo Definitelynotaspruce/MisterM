@@ -58,7 +58,7 @@ namespace MisterM.Controllers
 
         public Computer UpdateComputer(ComputerReading computerReading)
         {
-            Computer? computer = _context.Computers.Find(computerReading.Mac);
+            Computer computer = _context.Computers.Find(computerReading.Mac);
             if (computer == null) return null;
 
             computer.motherboard_name = computerReading.Motherboard.Name;
